@@ -1,11 +1,26 @@
 package com.java.model;
 
+import java.util.Objects;
+
 public abstract class Document {
     protected int ID;
     protected String producer;
     protected int releaseNumber;
 
     public Document() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || !(o instanceof Document)) return false;
+        Document document = (Document) o;
+        return ID == document.ID;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID);
     }
 
     public Document(int ID, String producer, int releaseNumber) {
